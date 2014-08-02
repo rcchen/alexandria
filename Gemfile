@@ -38,3 +38,15 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Omniauth manages Facebook authentication
+gem 'omniauth'
+gem 'omniauth-facebook'
+
+# Figaro deals with configuration details
+gem 'figaro'
+
+# Google Books API
+gem 'googlebooks'
+
+# Bootstrap
+gem 'bootstrap-sass'

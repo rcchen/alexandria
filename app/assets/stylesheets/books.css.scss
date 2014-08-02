@@ -1,0 +1,26 @@
+// Place all the styles related to the Books controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+img {
+	width: 100%;
+}
+
+.book-recommendation {
+	margin-bottom: 10px;
+}
+
+.book-recommendation-user {
+}
+
+.book-recommendation-review {
+	font-style: italic;
+}
+
+.book-discussion {
+	margin-bottom: 10px;
+}
+
+.book-discussion-comment {
+	padding-left: 20px;
+}

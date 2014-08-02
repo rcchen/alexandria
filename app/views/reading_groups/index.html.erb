@@ -1,0 +1,5 @@
+<ul>
+<% @reading_groups.each do |reading_group| %>
+	<li><%= link_to reading_group.name, controller: 'reading_groups', action: 'view', id: reading_group %></li>
+<% end %>
+</ul>

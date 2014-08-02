@@ -1,0 +1,55 @@
+<div class="row">
+	<div class="col-xs-3">
+		<img src="<%= @image %>" />
+	</div>
+	<div class="col-xs-9">
+		<div class="panel panel-default book-data">
+			<div class="panel-heading">
+				<h3 class="panel-title">Metadata</h3>
+			</div>
+			<div class="panel-body">
+				<p>Title: <%= @book.title %></p>
+				<p>Author: <%= @book.author %></p>
+				<p>ISBN: <%= @book.isbn %></p>
+			</div>
+		</div>
+		<div class="panel panel-default book-recommendations">
+			<div class="panel-heading">
+				<h3 class="panel-title">Recommendations</h3>
+			</div>
+			<div class="panel-body">
+			<% if @recommendations.empty? %>
+				<div>None of your reading groups have recommended this book yet. <a href="#">Be the first?</a></div>
+			<% end %>
+			<% @recommendations.each do |recommendation| %>
+				<div class="book-recommendation">
+					<div class="book-recommendation-user">
+						<strong><%= recommendation.user.first_name %></strong> <strong><%= recommendation.recommended ? 'recommends' : 'does not recommend' %></strong> this book to <%= recommendation.reading_group.name %>
+					</div>
+					<div class="book-recommendation-review"><%= recommendation.review %></div>
+				</div>
+			<% end %>
+			</div>
+		</div>
+		<div class="panel panel-default book-discussions">
+			<div class="panel-heading">
+				<h3 class="panel-title">Discussions</h3>
+			</div>
+			<div class="panel-body">
+			<% if @discussions.empty? %>
+				<div>There are no open discussions on this book yet. <a href="#">Be the first?</a></div>
+			<% end %>
+			<% @discussions.each do |discussion| %>
+				<div class="book-discussion">
+					<strong><%= discussion.user.first_name %></strong> asks: <%= discussion.body %>
+				</div>
+				<% discussion.discussions.order(created_at: :asc).each do |comment| %>
+				<div class="book-discussion book-discussion-comment">
+					<strong><%= comment.user.first_name %></strong> responds: <%= comment.body %>
+				</div>
+				<% end %>
+			<% end %>
+			</div>
+		</div>
+	</div>
+</div>
