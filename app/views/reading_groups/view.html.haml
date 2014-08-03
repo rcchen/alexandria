@@ -1,0 +1,18 @@
+.row
+  .col-xs-8
+    - @reading_group.recommendations.each do |recommendation|
+      %div
+        %div
+          = recommendation.book.title
+          was #{recommendation.recommended ? 'recommended' : 'not recommended'} by #{recommendation.user.first_name}
+        %div= recommendation.review
+  .col-xs-4
+    .panel.panel-primary
+      .panel-heading
+        %h3.panel-title Members
+      .panel-body
+        %ul.list-unstyled
+          - @reading_group.users.each do |user|
+            %li
+              = user.first_name
+              = user.last_name
