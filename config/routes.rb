@@ -12,6 +12,12 @@ Rails.application.routes.draw do
   get 'groups' => 'reading_groups#index'
   get 'groups/:id' => 'reading_groups#view'
 
+  get 'discussions/new' => 'discussions#new'
+  post 'discussions/create' => 'discussions#create'
+
+  get 'recommendations/new' => 'recommendations#new'
+  post 'recommendations/create' => 'recommendations#create'
+
   # You can have the root of your site routed with "root"
   root 'books#index'
 

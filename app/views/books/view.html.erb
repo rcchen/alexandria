@@ -5,7 +5,8 @@
 	<div class="col-xs-9">
 		<div class="panel panel-default book-data">
 			<div class="panel-heading">
-				<h3 class="panel-title">Metadata</h3>
+				<span><h3 class="panel-title">Metadata</h3></span>
+				<span class="pull-right"><%= link_to "Update metadata", controller: "books", action: "update", id: @book %></span>
 			</div>
 			<div class="panel-body">
 				<p>Title: <%= @book.title %></p>
@@ -15,7 +16,8 @@
 		</div>
 		<div class="panel panel-default book-recommendations">
 			<div class="panel-heading">
-				<h3 class="panel-title">Recommendations</h3>
+				<span><h3 class="panel-title">Recommendations</h3></span>
+				<span class="pull-right"><%= link_to "New recommendation", controller: "recommendations", action: "new", book: @book %></span>
 			</div>
 			<div class="panel-body">
 			<% if @recommendations.empty? %>
@@ -33,7 +35,8 @@
 		</div>
 		<div class="panel panel-default book-discussions">
 			<div class="panel-heading">
-				<h3 class="panel-title">Discussions</h3>
+				<span><h3 class="panel-title">Discussions</h3></span>
+				<span class="pull-right"><%= link_to "New discussion", controller: "discussions", action: "new", book: @book %></span>
 			</div>
 			<div class="panel-body">
 			<% if @discussions.empty? %>
