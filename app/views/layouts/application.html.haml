@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %title Alexandria
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
+      .container
+        .navbar-header
+          %a.navbar-brand{:href => "/"} Alexandria
+        - if current_user
+          %p.navbar-text.navbar-right
+            Signed in as
+            %a.navbar-link{:href => "#"}= @current_user.first_name
+    .container
+      = yield

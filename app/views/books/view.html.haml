@@ -1,0 +1,45 @@
+.row
+  .col-xs-3
+    %img{:src => @image}/
+  .col-xs-9
+    .panel.panel-default.book-data
+      .panel-heading
+        %h3.panel-title Metadata
+      .panel-body
+        %p
+          Title: #{@book.title}
+        %p
+          Author: #{@book.author}
+        %p
+          ISBN: #{@book.isbn}
+    .panel.panel-default.book-recommendations
+      .panel-heading
+        %h3.panel-title Recommendations
+      .panel-body
+        - if @recommendations.empty?
+          %div
+            None of your reading groups have recommended this book yet.
+            %a{:href => "#"} Be the first?
+        - @recommendations.each do |recommendation|
+          .book-recommendation
+            .book-recommendation-user
+              %strong= recommendation.user.first_name
+              %strong= recommendation.recommended ? 'recommends' : 'does not recommend'
+              this book to #{recommendation.reading_group.name}
+            .book-recommendation-review= recommendation.review
+    .panel.panel-default.book-discussions
+      .panel-heading
+        %h3.panel-title Discussions
+      .panel-body
+        - if @discussions.empty?
+          %div
+            There are no open discussions on this book yet.
+            %a{:href => "#"} Be the first?
+        - @discussions.each do |discussion|
+          .book-discussion
+            %strong= discussion.user.first_name
+            asks: #{discussion.body}
+          - discussion.discussions.order(created_at: :asc).each do |comment|
+            .book-discussion.book-discussion-comment
+              %strong= comment.user.first_name
+              responds: #{comment.body}

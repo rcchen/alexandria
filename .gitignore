@@ -27,3 +27,5 @@ pickle-email-*.html
 
 # Figaro stuff
 config/application.yml
+
+.idea
