@@ -51,3 +51,6 @@ gem 'googlebooks'
 
 # Bootstrap
 gem 'bootstrap-sass'
+
+# Breadcrumbs for Rails
+gem 'breadcrumbs_on_rails'

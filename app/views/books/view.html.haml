@@ -27,7 +27,8 @@
             .book-recommendation-user
               %strong= recommendation.user.first_name
               %strong= recommendation.recommended ? 'recommends' : 'does not recommend'
-              this book to #{recommendation.reading_group.name}
+              this book to
+              = link_to recommendation.reading_group.name, controller: "reading_groups", action: "view", id: recommendation.reading_group 
             .book-recommendation-review= recommendation.review
     .panel.panel-default.book-discussions
       .panel-heading

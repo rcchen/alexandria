@@ -1,7 +1,11 @@
 class ReadingGroupsController < ApplicationController
 
 	def index
-		@reading_groups = @current_user.reading_groups
+		if @current_user.nil?
+			redirect_to '/login'
+		else
+			@reading_groups = @current_user.reading_groups
+		end
 	end
 
 	def view
