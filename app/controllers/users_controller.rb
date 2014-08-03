@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
 
+	def index
+		
+	end
+
 	def login
-		session[:user_id] = User.find_by_username('james').id
 		redirect_to root_path
 	end
 

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
+  get 'home' => 'users#index'
   get 'login' => 'users#login'
   get 'logout' => 'users#logout'
 
@@ -22,7 +23,7 @@ Rails.application.routes.draw do
   post 'recommendations/modify' => 'recommendations#modify'
 
   # You can have the root of your site routed with "root"
-  root 'reading_groups#index'
+  root 'users#index'
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]

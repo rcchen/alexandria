@@ -1,0 +1,4 @@
+- if @current_user.nil?
+  %a{:href => '/auth/facebook'} Authenticate with Facebook
+- else
+  = @current_user.first_name
