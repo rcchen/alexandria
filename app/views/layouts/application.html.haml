@@ -18,4 +18,10 @@
           %p.navbar-text.navbar-right
             %a.navbar-link{:href => "/login"} Sign in
     .container
+      - if not flash[:info].nil?
+        .alert.alert-info #{flash[:info]}
+      - if not flash[:success].nil?
+        .alert.alert-success #{flash[:success]}
+      - if not flash[:danger].nil?
+        .alert.alert-danger #{flash[:danger]}
       = yield

@@ -1,4 +1,15 @@
-- if @current_user.nil?
-  %a{:href => '/auth/facebook'} Authenticate with Facebook
-- else
-  = @current_user.first_name
+.row
+  .col-xs-8
+    - if @current_user.nil?
+      %a{:href => '/auth/facebook'} Authenticate with Facebook
+    - else
+      = @current_user.first_name
+  .col-xs-4
+    .panel.panel-default.book-data
+      .panel-heading
+        %h3.panel-title My Groups
+      %ul.list-group
+        - if not @current_user.nil?
+          - @current_user.reading_groups.each do |reading_group|
+            %a{:href => url_for(:controller => 'reading_groups', :action => 'view', :id => reading_group.id), :class => 'list-group-item'} #{reading_group.name}
+          %a{:href => url_for(:controller => 'reading_groups', :action => 'new'), :class => 'list-group-item list-group-item-success'} Join/create group

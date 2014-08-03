@@ -34,3 +34,7 @@ raymond_bos_dis = Discussion.create(book: bos, user: raymond, reading_group: dou
 # Now a child comment for BOS
 roger_bos_com = Discussion.create(book: bos, user: roger, reading_group: doublesprout, body: 'Well this reading group software might be a good start!')
 raymond_bos_dis.discussions << roger_bos_com
+
+# This group is only for James
+singlebamboo = ReadingGroup.create(name: 'Single Bamboo', description: 'A place for only James to intellectually discuss things with himself.')
+singlebamboo.users << james

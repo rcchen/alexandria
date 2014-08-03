@@ -1,0 +1,27 @@
+.row
+  .col-xs-3
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title Join Existing Group
+      .panel-body
+        = form_for '', html: {class: "form"}, url: {action: "join"} do |f|
+          .form-group
+            %label.control-label Invite Code
+            = f.text_field :code, class: "form-control"
+          .form-group
+            = f.submit "Join", class: "btn btn-default"
+
+  .col-xs-9
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title New Reading Group
+      .panel-body
+        = form_for @reading_group, html: {class: "form-horizontal"}, url: {action: "create"} do |f|
+          .form-group
+            %label.col-sm-2.control-label Reading Group
+            .col-sm-10= f.text_field :name, class: "form-control"
+          .form-group
+            %label.col-sm-2.control-label Description
+            .col-sm-10= f.text_area :description, size: "60x12", class: "form-control"
+          .form-group
+            .col-sm-offset-2.col-sm-10= f.submit "Create", class: "btn btn-default"        

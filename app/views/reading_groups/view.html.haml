@@ -19,6 +19,16 @@
   .col-xs-4
     .panel.panel-primary
       .panel-heading
+        %h3.panel-title Metadata
+      .panel-body
+        %p 
+          %strong Description: 
+          #{@reading_group.description}
+        %p  
+          %strong Invite code:
+          #{@reading_group.invite_code}
+    .panel.panel-primary
+      .panel-heading
         %h3.panel-title Members
       .panel-body
         %ul.list-unstyled

@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20140803200217) do
   create_table "reading_groups", force: true do |t|
     t.string   "name"
     t.text     "description"
+    t.string   "invite_code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -61,7 +62,7 @@ ActiveRecord::Schema.define(version: 20140803200217) do
     t.datetime "updated_at"
     t.string   "provider"
     t.string   "uid"
-    t.string   "name"
+    t.string   "image_url"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
   end

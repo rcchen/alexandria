@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   get 'books/:id/update' => 'books#update'
 
   get 'groups' => 'reading_groups#index'
+  get 'groups/new' => 'reading_groups#new'
+  post 'groups/create' => 'reading_groups#create'
+  post 'groups/join' => 'reading_groups#join'
   get 'groups/:id' => 'reading_groups#view'
 
   get 'discussions/new' => 'discussions#new'
