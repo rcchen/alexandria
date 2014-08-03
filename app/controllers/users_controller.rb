@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	skip_before_action :current_user, only: [:logout]
 
 	def index
 
