@@ -14,7 +14,9 @@
           ISBN: #{@book.isbn}
     .panel.panel-default.book-recommendations
       .panel-heading
-        %h3.panel-title Recommendations
+        %span
+          %h3.panel-title Recommendations
+        %span.pull-right= link_to "New recommendation", controller: "recommendations", action: "new", book: @book
       .panel-body
         - if @recommendations.empty?
           %div
@@ -29,7 +31,9 @@
             .book-recommendation-review= recommendation.review
     .panel.panel-default.book-discussions
       .panel-heading
-        %h3.panel-title Discussions
+        %span
+          %h3.panel-title Discussions
+        %span.pull-right= link_to "New discussion", controller: "discussions", action: "new", book: @book
       .panel-body
         - if @discussions.empty?
           %div

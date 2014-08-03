@@ -9,8 +9,7 @@
         = form_for @discussion, html: {class: "form-horizontal"}, url: {action: "create"} do |f|
           .form-group
             %label.col-sm-2.control-label Reading Group
-            .col-sm-10
-              = f.select :reading_group_id, options_for_select(@groups), class: "form-control"
+            .col-sm-10= f.select :reading_group_id, options_for_select(@groups), {}, {class: "form-control"}
           .form-group
             %label.col-sm-2.control-label Body
             .col-sm-10= f.text_area :body, size: "60x12", class: "form-control"
