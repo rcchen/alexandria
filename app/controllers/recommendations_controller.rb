@@ -10,4 +10,18 @@ class RecommendationsController < ApplicationController
 		end
 		@recommendation = Recommendation.new
 	end
+
+	def create
+		recommendation = Recommendation.new(recommendation_params)
+		recommendation.user = @current_user
+		recommendation.save
+		redirect_to controller: "books", action: "view", id: recommendation.book
+	end
+
+	private
+
+	def recommendation_params
+		params.require(:recommendation).permit(:book_id, :reading_group_id, :recommended, :review)
+	end
+
 end

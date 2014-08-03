@@ -21,7 +21,7 @@
         - if @recommendations.empty?
           %div
             None of your reading groups have recommended this book yet.
-            %a{:href => "#"} Be the first?
+            = link_to "Be the first?", controller: "recommendations", action: "new", book: @book
         - @recommendations.each do |recommendation|
           .book-recommendation
             .book-recommendation-user
@@ -38,11 +38,12 @@
         - if @discussions.empty?
           %div
             There are no open discussions on this book yet.
-            %a{:href => "#"} Be the first?
+            = link_to "Be the first?", controller: "discussions", action: "new", book: @book
         - @discussions.each do |discussion|
           .book-discussion
             %strong= discussion.user.first_name
-            asks: #{discussion.body}
+            asks: #{discussion.body} -
+            = link_to "Reply", controller: "discussions", action: "new", book: @book, parent: discussion
           - discussion.discussions.order(created_at: :asc).each do |comment|
             .book-discussion.book-discussion-comment
               %strong= comment.user.first_name

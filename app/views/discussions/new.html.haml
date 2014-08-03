@@ -4,13 +4,22 @@
   .col-xs-9
     .panel.panel-default.book-recommendations
       .panel-heading
-        %h3.panel-title New Discussion
+        - if params[:parent]
+          %h3.panel-title Reply to Discussion
+        - else
+          %h3.panel-title New Discussion
       .panel-body
         = form_for @discussion, html: {class: "form-horizontal"}, url: {action: "create"} do |f|
           = f.hidden_field :book_id, value: @book.id
-          .form-group
-            %label.col-sm-2.control-label Reading Group
-            .col-sm-10= f.select :reading_group_id, options_for_select(@groups), {}, {class: "form-control"}
+          - if params[:parent]
+            = f.hidden_field :parent_id, value: params[:parent]
+            .form-group
+              %label.col-sm-2.control-label Parent
+              .col-sm-10= Discussion.find(params[:parent]).body
+          - if params[:parent].nil?
+            .form-group
+              %label.col-sm-2.control-label Reading Group
+              .col-sm-10= f.select :reading_group_id, options_for_select(@groups), {}, {class: "form-control"}
           .form-group
             %label.col-sm-2.control-label Body
             .col-sm-10= f.text_area :body, size: "60x12", class: "form-control"

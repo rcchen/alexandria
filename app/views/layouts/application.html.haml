@@ -12,7 +12,10 @@
           %a.navbar-brand{:href => "/"} Alexandria
         - if current_user
           %p.navbar-text.navbar-right
-            Signed in as
-            %a.navbar-link{:href => "#"}= @current_user.first_name
+            Signed in as #{@current_user.first_name}.
+            %a.navbar-link{:href => "/logout"} Sign out
+        - else
+          %p.navbar-text.navbar-right
+            %a.navbar-link{:href => "/login"} Sign in
     .container
       = yield

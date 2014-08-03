@@ -15,4 +15,7 @@
             %label.col-sm-2.control-label Review
             .col-sm-10= f.text_area :review, size: "60x12", class: "form-control"
           .form-group
+            %label.col-sm-2.control-label Recommended?
+            .col-sm-10= f.select :recommended, options_for_select([['Yes', 1],['No', 0]]), {}, {class: "form-control"}
+          .form-group
             .col-sm-offset-2.col-sm-10= f.submit "Create", class: "btn btn-default"        

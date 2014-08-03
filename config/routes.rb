@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  get 'users/login' => 'users#login'
-  get 'users/logout' => 'users#logout'
+  get 'login' => 'users#login'
+  get 'logout' => 'users#logout'
 
   get 'books' => 'books#index'
   get 'books/:id' => 'books#view'
@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   get 'recommendations/new' => 'recommendations#new'
   post 'recommendations/create' => 'recommendations#create'
+  get 'recommendations/edit' => 'recommendations#edit'
+  post 'recommendations/modify' => 'recommendations#modify'
 
   # You can have the root of your site routed with "root"
   root 'books#index'

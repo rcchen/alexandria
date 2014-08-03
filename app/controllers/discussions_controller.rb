@@ -13,6 +13,9 @@ class DiscussionsController < ApplicationController
 
 	def create
 		discussion = Discussion.new(discussion_params)
+		if not discussion.parent_id.nil?
+			discussion.book = discussion.parent.book
+		end
 		discussion.user = @current_user
 		discussion.save
 		redirect_to controller: "books", action: "view", id: discussion.book
@@ -21,7 +24,7 @@ class DiscussionsController < ApplicationController
 	private
 
 	def discussion_params
-		params.require(:discussion).permit(:book_id, :reading_group_id, :body)
+		params.require(:discussion).permit(:book_id, :reading_group_id, :parent_id, :body)
 	end
 
 end
