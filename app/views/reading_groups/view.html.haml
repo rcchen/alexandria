@@ -1,11 +1,21 @@
 .row
   .col-xs-8
-    - @reading_group.recommendations.each do |recommendation|
-      %div
-        %div
-          = recommendation.book.title
-          was #{recommendation.recommended ? 'recommended' : 'not recommended'} by #{recommendation.user.first_name}
-        %div= recommendation.review
+    .panel.panel-primary
+      .panel-heading
+        %h3.panel-title Recently recommended
+      .panel-body
+        - @recommended_books.each do |recommended_book|
+          .result-cover
+            = link_to url_for(controller: "books", action: "view", id: recommended_book.id) do
+              = image_tag GoogleBooks.search(recommended_book.title).first.image_link(:zoom => 2)
+    .panel.panel-primary
+      .panel-heading
+        %h3.panel-title Recently discussed
+      .panel-body
+        - @discussed_books.each do |discussed_book|
+          .result-cover
+            = link_to url_for(controller: "books", action: "view", id: discussed_book.id) do
+              = image_tag GoogleBooks.search(discussed_book.title).first.image_link(:zoom => 2)
   .col-xs-4
     .panel.panel-primary
       .panel-heading

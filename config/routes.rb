@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   post 'recommendations/modify' => 'recommendations#modify'
 
   # You can have the root of your site routed with "root"
-  root 'books#index'
+  root 'reading_groups#index'
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
