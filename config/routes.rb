@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'logout' => 'users#logout'
 
   get 'books' => 'books#index'
+  get 'books/search' => 'books#search'
   get 'books/:id' => 'books#view'
   get 'books/:id/update' => 'books#update'
 

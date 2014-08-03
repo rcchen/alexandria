@@ -1,0 +1,8 @@
+%ul
+  - @results.each do |result|
+    %li #{result.title} by #{result.authors}
+
+
+- @results.each do |result|
+  .result-cover
+    %img{:src => result.image_link}/

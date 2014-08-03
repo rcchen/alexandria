@@ -27,4 +27,8 @@ class BooksController < ApplicationController
 		redirect_to action: 'view'
 	end
 
+	def search
+		@results = GoogleBooks.search(params[:q], {:count => 10})
+	end
+
 end
