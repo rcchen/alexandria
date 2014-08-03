@@ -4,15 +4,15 @@
   .col-xs-9
     .panel.panel-default.book-recommendations
       .panel-heading
-        %h3.panel-title New Discussion
+        %h3.panel-title New Recommendation
       .panel-body
-        = form_for @discussion, html: {class: "form-horizontal"}, url: {action: "create"} do |f|
+        = form_for @recommendation, html: {class: "form-horizontal"}, url: {action: "create"} do |f|
           = f.hidden_field :book_id, value: @book.id
           .form-group
             %label.col-sm-2.control-label Reading Group
             .col-sm-10= f.select :reading_group_id, options_for_select(@groups), {}, {class: "form-control"}
           .form-group
-            %label.col-sm-2.control-label Body
-            .col-sm-10= f.text_area :body, size: "60x12", class: "form-control"
+            %label.col-sm-2.control-label Review
+            .col-sm-10= f.text_area :review, size: "60x12", class: "form-control"
           .form-group
             .col-sm-offset-2.col-sm-10= f.submit "Create", class: "btn btn-default"        
