@@ -6,7 +6,7 @@ class BooksController < ApplicationController
 
 	def view
 		@book = Book.find_by_id(params[:id])
-		@image = GoogleBooks.search(@book.title).first.image_link(:zoom => 2)
+		@image = GoogleBooks.search(@book.isbn).first.image_link(:zoom => 2)
 		@recommendations = Recommendation.where({
 			book: @book, 
 			reading_group: @current_user.reading_groups
