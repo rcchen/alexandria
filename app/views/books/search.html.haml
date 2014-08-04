@@ -1,8 +1,12 @@
-%ul
-  - @results.each do |result|
-    %li #{result.title} by #{result.authors}
-
-
-- @results.each do |result|
-  .result-cover
-    %img{:src => result.image_link}/
+.row
+  .col-xs-12
+    = form_for '', html: {id: "search", class: "form"}, url: {action: 'find', a: params[:a]}, remote: true do |f|
+      = f.text_field :query, class: "form-control"
+.row
+  .col-xs-12
+    .results
+      %h4 Internal Results
+      #internal-results
+    .results
+      %h4 Google Results
+      #google-results

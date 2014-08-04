@@ -18,9 +18,9 @@ doublesprout = ReadingGroup.create(name: 'Doublesprout', description: 'A place f
 doublesprout.users << [roger, raymond, james]
 
 # Add some books into the system
-bos = Book.create(title: 'Blue Ocean Strategy', author: 'W. Chan Kim, Renée Mauborgne')
-ctc = Book.create(title: 'Crossing the Chasm', author: 'Geoffrey Moore')
-tls = Book.create(title: 'The Lean Startup', author: 'Eric Ries')
+bos = Book.create(title: 'Blue Ocean Strategy', author: 'W. Chan Kim, Renée Mauborgne', isbn: '9781591396192')
+ctc = Book.create(title: 'Crossing the Chasm', author: 'Geoffrey Moore', isbn: '9780060517120')
+tls = Book.create(title: 'The Lean Startup', author: 'Eric Ries', isbn: '9780307887894')
 
 # Create a recommendation for BOS
 roger_bos_rec = Recommendation.create(book: bos, user: roger, reading_group: doublesprout, recommended: true, review: 'Altogether a pretty interesting book though it can get dry towards the end. I particularly enjoyed the case studies that they had.')

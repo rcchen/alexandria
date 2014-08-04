@@ -28,7 +28,31 @@ class BooksController < ApplicationController
 	end
 
 	def search
-		@results = GoogleBooks.search(params[:q], {:count => 10})
+		
+	end
+
+	def find
+		internal_results = Array.new
+		Book.where("title = ? OR author = ? OR isbn = ?", params[:query], params[:query], params[:query]).limit(8).each do |internal_result|
+			result = {
+				id: internal_result.id,
+				title: internal_result.title,
+				authors: internal_result.author,
+				cover_img: GoogleBooks.search(internal_result.title + ' ' + internal_result.author).first.image_link
+			}
+			internal_results << result
+		end
+		google_results = Array.new
+		GoogleBooks.search(params[:query], {:count => 8}).each do |google_result|
+			result = {
+				title: google_result.title,
+				authors: google_result.authors,
+				cover_img: google_result.image_link,
+				isbn: google_result.isbn
+			}
+			google_results << result
+		end
+		render json: {a: params[:a], google: google_results, internal: internal_results}
 	end
 
 end
